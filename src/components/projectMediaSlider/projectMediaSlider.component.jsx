@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 
 const IMAGE_SLIDE_DURATION = 2000;
 const SLIDER_IMAGE_SIZES = '(max-width: 768px) 100vw, (max-width: 1320px) calc(100vw - 32px), 1320px';
+const SWIPE_THRESHOLD = 40;
 
 function getDimensions(image, fallbackWidth = 1800, fallbackHeight = 1125) {
   return {
@@ -16,6 +17,47 @@ const ProjectMediaSlider = ({ slides = [], projectName }) => {
   const [isInViewport, setIsInViewport] = useState(false);
   const sliderRef = useRef(null);
   const videoRefs = useRef([]);
+  const touchStartRef = useRef(null);
+
+  function showPrev() {
+    setActiveIndex((currentIndex) => (currentIndex - 1 + slides.length) % slides.length);
+  }
+
+  function showNext() {
+    setActiveIndex((currentIndex) => (currentIndex + 1) % slides.length);
+  }
+
+  function handleTouchStart(event) {
+    const touch = event.touches[0];
+    touchStartRef.current = {
+      x: touch.clientX,
+      y: touch.clientY
+    };
+  }
+
+  function handleTouchEnd(event) {
+    if (!touchStartRef.current || slides.length <= 1) {
+      touchStartRef.current = null;
+      return;
+    }
+
+    const touch = event.changedTouches[0];
+    const deltaX = touch.clientX - touchStartRef.current.x;
+    const deltaY = touch.clientY - touchStartRef.current.y;
+
+    touchStartRef.current = null;
+
+    if (Math.abs(deltaX) < SWIPE_THRESHOLD || Math.abs(deltaX) <= Math.abs(deltaY)) {
+      return;
+    }
+
+    if (deltaX > 0) {
+      showPrev();
+      return;
+    }
+
+    showNext();
+  }
 
   useEffect(() => {
     const node = sliderRef.current;
@@ -93,7 +135,7 @@ const ProjectMediaSlider = ({ slides = [], projectName }) => {
     }
 
     const timeoutId = window.setTimeout(() => {
-      setActiveIndex((currentIndex) => (currentIndex + 1) % slides.length);
+      showNext();
     }, IMAGE_SLIDE_DURATION);
 
     return () => window.clearTimeout(timeoutId);
@@ -105,7 +147,11 @@ const ProjectMediaSlider = ({ slides = [], projectName }) => {
 
   return (
     <section className="projectMediaSlider" aria-label={`${projectName} media slider`} ref={sliderRef}>
-      <div className="projectMediaViewport">
+      <div
+        className="projectMediaViewport"
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
+      >
         {slides.map((slide, index) => {
           const isActive = index === activeIndex;
           const image = slide.image;
