@@ -45,20 +45,6 @@ function NavbarComponent() {
             
          </section>
 
-            {/* <Navbar expand="sm">
-                <Navbar.Toggle />
-                <Navbar.Collapse className="justify-content-end">
-                    <Button onClick={handleShow}>Cart ({productsCount} Items)</Button>
-                </Navbar.Collapse>
-            </Navbar>
-            <Modal show={show} onHide={handleClose}>
-                <Modal.Header closeButton>
-                    <Modal.Title></Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-
-                </Modal.Body>
-            </Modal> */}
         </>
     )
 }
