@@ -11,32 +11,16 @@ const About =({about})=> {
 			return undefined;
 		}
 
-		const revealIfInView = () => {
-			const rect = node.getBoundingClientRect();
-			const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
-
-			if (rect.top <= viewportHeight * 0.92 && rect.bottom >= 0) {
-				setIsVisible(true);
-				return true;
-			}
-
-			return false;
-		};
-
-		if (revealIfInView()) {
-			return undefined;
-		}
-
 		const observer = new IntersectionObserver(
 			(entries) => {
 				entries.forEach((entry) => {
-					if (entry.isIntersecting) {
+					if (entry.isIntersecting && entry.intersectionRatio >= 0.18) {
 						setIsVisible(true);
 						observer.disconnect();
 					}
 				});
 			},
-			{ threshold: 0.01, rootMargin: '0px 0px 10% 0px' }
+			{ threshold: [0, 0.18, 0.3], rootMargin: '0px 0px -8% 0px' }
 		);
 
 		observer.observe(node);

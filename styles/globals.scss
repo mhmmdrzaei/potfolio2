@@ -468,7 +468,7 @@ main {
 }
 .aboutText {
   color: $blue;
-  width: 65%;
+  max-width: 730px;
   padding: 10vh 0 20vh;
   margin-left: auto;
   transform: translate3d(64px, 0, 0);
