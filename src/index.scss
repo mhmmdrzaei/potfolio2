@@ -1,0 +1,944 @@
+@font-face {
+  font-family: 'CreamySugar';
+  src: url('sources/fonts/creamysugar-webfont.woff2') format('woff2'),
+       url('sources/fonts/creamysugar-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@500;600&display=swap');
+
+
+
+@mixin fontSize($sizeValue){
+    font-size: $sizeValue * 1px;
+    font-size: calc($sizeValue/10) * 1rem;
+}
+$red: #FF0123;
+$blue:#0561F5;
+$orange:#C30414;
+
+html {
+    scroll-behavior: smooth;
+}
+img {
+  max-width: 100%;
+}
+
+body {
+  background: #F7F7F7;
+  font-family: 'Raleway', sans-serif;
+
+  margin: 0;
+  p {
+    line-height: 1.3;
+  }
+  @include fontSize(15);
+  color: $blue;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  @media screen and (max-width:600px) {
+    @include fontSize(12);
+  }
+}
+
+
+.flex {
+  display: flex;
+  flex-flow:wrap;
+  justify-content: space-between;
+}
+a, p span {
+  color: $orange;
+
+}
+a.base{
+  padding: 5px 25px 0px;
+  display: inherit;
+  width: fit-content;
+  border: 4px solid $blue;
+  border-radius: 34px;
+  margin-top: 20px;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: CreamySugar;
+  color: $red;
+  @include fontSize(30);
+  position: relative;
+  left: -10px;
+  @media screen and (max-width:1095px) {
+    @include fontSize(28);
+  }
+  @media screen and (max-width:700px) {
+    @include fontSize(24);
+  }
+  @media screen and (max-width:600px) {
+    @include fontSize(20);
+    padding:8px 22px 0;
+    text-align: center;
+    left: 0;
+  }
+
+}
+.base::before {
+  content: url(./sources/arrow.svg);
+  margin-right: 10px;
+  position: relative;
+  
+  @media screen and (max-width:700px) {
+    top: 0px;
+  }
+  @media screen and (max-width:600px) {
+   display: none;
+  }
+
+
+}
+img {
+  max-width: 100%;
+}
+h1 {
+   @include fontSize(55);
+   color: $red;
+   font-family: CreamySugar,
+   sans-serif;
+   font-weight: 400;
+   text-transform: uppercase;
+   margin: 0;
+   @media screen and (max-width:900px) {
+    @include fontSize(45);
+  }
+  @media screen and (max-width:600px) {
+    @include fontSize(32);
+  }
+ }
+
+
+ h2 {
+    @include fontSize(32);
+    color: $red;
+    font-family: CreamySugar,
+    sans-serif;
+    font-weight: 400;
+    margin: 0;
+    @media screen and (max-width:900px) {
+      @include fontSize(30);
+    }
+  }
+
+  h3 {
+     @include fontSize(14);
+     color: black;
+     font-family: 'Raleway', sans-serif;
+     font-weight: 600;
+     margin: 0;
+     @media screen and (max-width:600px) {
+      @include fontSize(12);
+    }
+   }
+
+header {
+  
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  top: 25px;
+  
+  font-family: CreamySugar,
+  sans-serif;
+
+  .headerInner {
+    position: fixed;
+    @extend .flex;
+    align-items: center;
+    width: 96%;
+    top: 10px;
+    max-width: 1200px;
+     z-index: 1;
+     @media screen and (max-width:500px) {
+      width: 93%;
+
+    
+    }
+     a {
+     color: $red;
+     text-decoration: none;
+     @include fontSize(30);
+    //  min-width: 355px;
+    //  width: 25%;
+     display: inline;
+     @media screen and (max-width:880px) {
+      @include fontSize(30);
+      
+
+    }
+    @media screen and (max-width:500px) {
+      @include fontSize(23);
+      min-width: 200px;
+      width: fit-content;
+      
+    
+    }
+
+    }
+    .mobileMenu {
+      display: none;
+      font-family: CreamySugar, sans-serif;
+      background: $blue;
+      color:#F7F7F7;
+      border: none;
+      @include fontSize(23);
+      padding: 18px 10px;
+      border-radius: 100%;
+      box-shadow: -2px 2px 7px black;
+      position: relative;
+    left: -10px;
+    z-index: 2;
+    
+      @media screen and (max-width:880px) {
+        display: block;
+      }
+      @media screen and (max-width:500px) {
+        @include fontSize(17);
+      }
+
+    }
+    .divider {
+      width: 30%;
+      border-bottom: 4px solid $blue;
+      // margin: 0 20px; 
+      @media screen and (max-width:1095px) {
+        width: 10%;
+      }
+      @media screen and (max-width:880px) {
+        display: none;
+      }
+    }
+
+    nav {
+      width: 40%;
+      .navInner {
+        
+        @extend .flex;
+     
+      }
+      @media screen and (max-width:1095px) {
+        width: 54%;
+        @media screen and (max-width:500px) {
+          @include fontSize(17);
+        }
+    }
+      a {
+        @include fontSize(28);
+        min-width: 0;
+        width: fit-content;
+
+
+
+
+
+      }
+      a:hover::before  {
+        content: url(./sources/scratch.svg);
+        position: absolute;
+  
+      }
+
+      @media screen and (max-width:880px) {
+        width: 100%;
+        display: none;
+        .navInner {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+
+          a, div {
+            width: 100%;
+          
+            text-align: center;
+        
+          }
+        }
+      }
+    }
+    .showMenu {
+      @media screen and (max-width:880px) {
+      display: block;
+      width: 100%;
+      height: 100vh;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background: $blue;
+      
+      // background: linear-gradient(180deg, rgba(247,247,247,0) 0%, rgba(247,247,247,1) 29%, rgba(247,247,247,1) 48%, rgba(249,249,249,1) 64%, rgba(255,255,255,0) 100%);
+
+      
+      a {
+        margin-right: 10px;
+        display: block;
+        text-shadow: 2px 2px 4px white;
+      }
+
+    }
+  }
+  }
+
+
+
+}
+
+//main 
+@keyframes play {
+  0% {
+    opacity: 0;
+    text-shadow: none;
+  
+  }
+  100% { 
+    opacity: 1;
+    text-shadow: 
+    3px 3px black, 
+    6px 6px white, 
+    9px 9px black, 
+    12px 12px white, 
+    15px 15px black, 
+    18px 18px white, 
+    21px 21px black, 
+    24px 24px white, 
+    27px 27px black, 
+    30px 30px white, 
+    33px 33px black, 
+    36px 36px white, 
+    39px 39px black, 
+    42px 42px white, 
+    45px 45px black, 
+    48px 48px white, 
+    51px 51px black, 
+    54px 54px white, 
+    57px 57px black, 
+    60px 60px white, 
+    63px 63px black, 
+    66px 66px white, 
+    69px 69px black, 
+    72px 72px white, 
+    75px 75px black;
+   }
+}
+
+@keyframes playMobile {
+  0% {
+    opacity: 0;
+    text-shadow: none;
+  
+  }
+  100% { 
+    opacity: 1;
+    text-shadow: 
+    3px 3px black, 
+    6px 6px white, 
+    9px 9px black, 
+    12px 12px white, 
+    15px 15px black, 
+    18px 18px white, 
+    21px 21px black, 
+    24px 24px white, 
+    27px 27px black, 
+    30px 30px white, 
+    33px 33px black, 
+    36px 36px white, 
+    39px 39px black, 
+    42px 42px white;
+  }
+}
+
+//intro
+.introText {
+  width: 95%;
+  // margin: 0 auto;
+  
+}
+.intro {
+  font-family: 'Raleway', sans-serif;
+  color: black;
+  @include fontSize(68);
+  position: relative;
+  z-index: -1;
+
+  margin:15vh 0 2vh 2vw;
+  text-shadow: 
+    3px 3px black, 
+    6px 6px white, 
+    9px 9px black, 
+    12px 12px white, 
+    15px 15px black, 
+    18px 18px white, 
+    21px 21px black, 
+    24px 24px white, 
+    27px 27px black, 
+    30px 30px white, 
+    33px 33px black, 
+    36px 36px white, 
+    39px 39px black, 
+    42px 42px white, 
+    45px 45px black, 
+    48px 48px white, 
+    51px 51px black, 
+    54px 54px white, 
+    57px 57px black, 
+    60px 60px white, 
+    63px 63px black, 
+    66px 66px white, 
+    69px 69px black, 
+    72px 72px white, 
+    75px 75px black;
+    animation: play 4.5s cubic-bezier(0.5, 2, 0.5, 0.75); 
+  
+  text-transform: none;
+  @media screen and (max-width:850px) {
+
+    font-size: 13vw;
+
+    
+  }
+  @media screen and (max-width:550px) {
+
+    font-size: 17vw;
+    
+  }
+  
+}
+@keyframes rotate {
+  0% {fill: $red }
+  50% { fill:$blue }
+  90% { fill: black}
+  100% {fill: $red }
+}
+.smileyParent {
+  width: fit-content;
+  position: relative;
+  left: calc(100% - 99px - 5%);
+  margin-bottom: 10vh;
+  @media screen and (max-width:550px) { 
+    margin-top: 10vh;
+  }
+}
+.smileySVG path {
+  fill: $red;
+  animation: rotate 10s;
+}
+
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+
+  padding:20px;
+}
+.aboutText {
+  width: 65%;
+  padding: 10vh 0 20vh;
+  margin-left: auto;
+  @media screen and (max-width:800px) {
+    width: 100%;
+  }
+}
+
+//works Header
+.worksHeader {
+  margin: 0vh 0 10vh;
+  h2 {
+    transform: rotate(-27deg);
+    position: relative;
+    bottom: -12vh;
+    left: -1%;
+    width: fit-content;
+  }
+  .worksSVG {
+    width: 85%;
+
+  }
+  
+  h3 {
+    width: fit-content;
+    margin-left: auto;
+    transform: rotate(53deg);
+    position: relative;
+    left: -18%;
+    bottom: 12vh;
+  }
+  @media screen and (max-width:500px) {
+    h2 {
+      bottom: -10vh;
+      left: -2%;
+    }
+    .worksSVG {
+      width: 100%;
+    }
+    h3 {
+
+      left: 0;
+      bottom: 11vh;
+    }
+  }
+
+
+}
+.spacer {
+  margin-top: 15vh;
+}
+
+//single projects
+@keyframes shadow {
+  50% {
+    text-shadow: 12px 11px 4px #0561F5;
+  }
+  100% {
+    text-shadow: 0;
+  }
+}
+.singleProjectContainer {
+
+  @extend .flex;
+  margin: 15vh 0 0;
+  .projectDetails {
+    h1 {
+      text-shadow: 0;
+      // border-bottom: 4px solid $blue;
+      width: fit-content;
+      // max-width: 250px;
+      animation: shadow 3s ease-in-out infinite ;
+    }
+
+    h3 {
+      margin: 50px 0;
+      max-width: 250px;
+    }
+    width: 35%;
+    @media screen and (max-width:830px) {
+      width: 100%;
+      h1, h3 {
+       margin: 5px 0;
+      }
+
+    }
+  }
+  .primaryImages {
+    width: 62%;
+    img:nth-child(2) {
+      transform: rotate(-18deg);
+      max-width: 200px;
+      position: relative;
+      top: -10vw;
+      filter: drop-shadow(6px 4px 4px rgba(0, 0, 0, 0.25));
+    }
+    @media screen and (max-width:830px) {
+      width: 90%;
+      margin: 20px auto 0;
+    }
+    @media screen and (max-width:700px) {
+      img:nth-child(2) {
+        max-width: 120px;
+        // margin-bottom: -20px;
+        left: 7%;
+      }
+    }
+  }
+  .additionalDetails {
+    @extend .flex;
+    width: 100%;
+    video {
+      width: 100%;
+    }
+    .video {
+      width: 35%;
+      margin-top: 22px;
+      span {
+        color: black;
+        margin: 20px 0;
+        display: inherit;
+      }
+    }
+    .detailsText {
+      width: 62%;
+    }
+    @media screen and (max-width:700px) {
+      .video, .detailsText {
+        width: 100%;
+      }
+    }
+  }
+
+}
+.detailsTextFull, .additionalDetails {
+  position: relative;
+  top: -5vw;
+  @media screen and (max-width:500px) {
+    top: 0px;
+  }
+}
+.singleProjectContainer:nth-child(odd){
+  flex-direction: row-reverse;
+  img:nth-child(2) {
+    transform: rotate(18deg);
+    left: 65%;
+  }
+  h1, h3 {
+    // max-width: none;
+    text-align: right;
+    margin-left: auto;
+  }
+  a.base {
+    margin-left: auto;
+  }
+  @media screen and (max-width:830px) {
+    flex-direction: row;
+    img:nth-child(2) {
+      transform: rotate(18deg);
+      left: 55%;
+    }
+    h1, h3 {
+      text-align: left;
+      margin: 5px 0;
+    }
+    a.base {
+      margin-left: 0;
+    }
+  }
+
+  }
+
+//moreInfo
+.moreInfo {
+  background: $blue;
+  left: 0;
+  // height: 30vh;
+  padding: 80px;
+  a {
+    display: block;
+    @extend .base;
+    background: white;
+    border: 4px solid black;
+    margin: 0 auto ;
+    
+  }
+  a:nth-child(2) {
+    // @include fontSize(23);
+    // padding: 20px;
+    margin: 50px auto 0;
+  }
+  // @media screen and (max-width:700px) {
+  //   a:nth-child(2) {
+  //     @include fontSize(18);
+  //     padding: 8px 22px;
+  //   }
+  // }
+}
+
+//footer 
+footer {
+  max-width: 1200px;
+  margin: 50px auto 30px;
+  padding: 0 10px;
+  @extend .flex;
+  h2 {
+    text-transform: uppercase;
+    border-bottom: 4px solid $blue;
+  }
+  nav a {
+    display: block;
+    text-decoration: none;
+    margin: 15px 0;
+  }
+  .email {
+    text-align: right;
+
+    .guySVG {
+      margin-right: 20px;
+    }
+    h4 {
+      color: $red;
+      margin: 10px 0;
+      font-weight: 400;
+    }
+  }
+  .siteCredits {
+    @extend .flex;
+    align-items: center;
+    width: 100%;
+    margin-top: 20px;
+    .copyright {
+      font-family: CreamySugar;
+      color: $red;
+      @include fontSize(20);
+    }
+  }
+  @media screen and (max-width:700px) {
+    text-align: center;
+    nav {
+      margin: 0 auto;
+      text-align: center;
+    }
+    .email {
+      width: 100%;
+      text-align: center;
+      .emailVisual {
+        display: none;
+      }
+    }
+    .siteCredits span {
+      width: 100%;
+      text-align: center;
+      margin: 10px 0;;
+    }
+  }
+}
+//musicVideo
+.musicVideoInfo {
+  margin: 12vh 0 50px;
+  .musicVideoText {
+    width: 55%;
+    margin-left: auto;
+  }
+  @media screen and (max-width:922px) {
+     svg {
+      width: 100%;
+     }
+
+  }
+  @media screen and (max-width:700px) {
+
+    h2 {
+     @include fontSize(22);
+     position: relative;
+      top: 7vh;
+    }
+ }
+}
+.musicVideoContainer {
+  max-width: 850px;
+  margin: 0 auto;
+}
+.responsive {
+  position: relative;
+  padding-bottom: 56.25%;
+  margin: 50px auto;
+
+  iframe {
+    position: absolute;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100%;
+  }
+}
+
+// shop styles
+
+.shopContainer {
+  margin-top: 80px;
+  position: relative;
+  .modal-window {
+    position: fixed;
+    display: none;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #F7F7F7;
+    border:1px solid $red;
+    padding: 30px;
+    min-width: 320px;
+    max-width: 600px;
+    width: 80%;
+  
+  }
+  .showModal {
+    display: block;
+  }
+  h1 {
+    font-size: 3rem;
+  }
+  .product {
+    @extend .flex;
+    .productImages {
+      width: 58%;
+    }
+    .productInfo {
+      width: 40%;
+    }
+    .btn-primary {
+      background: $red;
+    color: white;
+    border: none;
+    border-radius: none;
+    box-shadow: -2px 2px 7px black;
+    margin: 10px 10px 10px 0;
+    // min-width: 40px;
+    min-height: 30px;
+    padding: 10px 20px 5px 20px;
+    font-family: CreamySugar, sans-serif;
+    @include fontSize(15);
+    }
+    .btn-danger {
+      background: $blue;
+      color: white;
+    border: none;
+    border-radius: none;
+    box-shadow: -2px 2px 7px black;
+    margin: 10px 10px 10px 0;
+    // min-width: 40px;
+    min-height: 30px;
+    padding: 10px 20px 10px 20px;
+    font-weight: 700;
+    // text-transform: uppercase;
+    @include fontSize(8);
+
+    }
+    h1 {
+      font-family: 'Raleway', sans-serif;
+      text-transform: unset;
+      font-weight: 800;
+    }
+    
+    h3 {
+      color:$blue;
+    }
+    p, label{
+      color: black;
+      @include fontSize(10);
+      font-weight: 700;
+    }
+  }
+  @media screen and (max-width:700px) {
+    .product{
+      .productImages, .productInfo {
+        width: 100%;
+        margin: 0 auto;
+      }
+      .productInfo {
+        margin-top: 20px;
+      }
+    }
+    .modal-window {
+      position: fixed;
+     top:0%;
+      left: 0%;
+      width: 90%;
+      height: 100vh;
+      transform: translate(0%, 0%);
+      background: #F7F7F7;
+      border:1px solid $red;
+      padding: 5%;
+      padding-top: 100px;
+      border: none;
+    
+    }
+
+  }
+
+}
+
+.cartbutton, .cartbuttonClose,.btn-sm,.btn-success {
+  background: $red;
+color: white;
+border: none;
+border-radius: none;
+box-shadow: -2px 2px 7px black;
+margin: 10px 10px 10px 0;
+// min-width: 40px;
+min-height: 30px;
+padding: 10px 20px 5px 20px;
+font-family: CreamySugar, sans-serif;
+@include fontSize(15);
+}
+.btn-sm {
+  background: $blue;
+}
+.cartbutton {
+  position: fixed;
+  // left: 88%;
+  background: $blue;
+  bottom: 35px;
+}
+.cartbuttonClose {
+  float: right;
+}
+.cart-empty {
+  margin-top: 100px;
+  text-align: center;
+}
+
+// book componetnt
+.media-container { 
+  &:hover .book {
+      transform: rotateX(5deg) rotateY(-50deg);
+  }
+  
+  &:hover .book-shadow {
+      transform: rotateX(90deg) rotateZ(40deg);
+  }
+}
+.book {
+  position: relative;
+  z-index: 1;
+  max-width: 450px;
+  height: 100%;
+  margin: 0 auto;
+  transform-style: preserve-3d;
+  transition: transform 1s ease;
+  transform: rotateX(0deg) rotateY(-20deg);
+  z-index: -1;
+
+
+  
+  &__front {
+      border-radius: 0;
+      transform: translateZ(calc(20px));
+      img {
+        height: auto;
+      
+      }
+  }
+  
+  &__back {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      background: grey;
+      border-radius: 0px;
+      overflow: hidden;
+      transform: translateZ(calc(-1 * 9px));
+  }
+  
+  &__paper {
+      height: 98%;
+      width: calc(9px * 2);
+      background: white;
+      position: absolute;
+      top: 1%;
+      right: 0;
+      background: 
+          linear-gradient(90deg, rgba(0, 0, 0, 0.3), rgba(255, 255, 257, 0)), 
+          repeating-linear-gradient(90deg, white, #e2e2e2 1px, white 3px, #9a9a9a 1px);
+      transform: rotateY(90deg) translateX(calc(9px / 7)) translateZ(calc(var(--thickness) / 1.2));
+  }
+}
+
+.book-shadow {    
+  position: absolute;
+  width: 400px;
+  height: calc(100px + 9px);
+  background: radial-gradient(70% 85%, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0) 100%);
+  transform: rotateX(90deg) rotateZ(30deg);
+  transition: transform 1s ease;
+  filter: blur(16px);
+}
+.successPage {
+  margin-top: 100px;
+  text-align: center;
+  padding: 10vh 3vh;
+  min-height: 20vh;
+}

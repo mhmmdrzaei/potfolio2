@@ -1,0 +1,30 @@
+{
+  "name": "mohammad-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "sanity:dev": "sanity dev"
+  },
+  "dependencies": {
+    "@cloudinary/react": "^1.13.0",
+    "@cloudinary/url-gen": "^1.22.0",
+    "@sanity/client": "^7.11.0",
+    "@sanity/vision": "^4.11.1",
+    "animate.css": "^4.1.1",
+    "bootstrap": "^5.3.8",
+    "groq": "^4.11.1",
+    "html-react-parser": "^5.2.7",
+    "next": "^15.2.0",
+    "react": "^19.0.0",
+    "react-bootstrap": "^2.10.10",
+    "react-dom": "^19.0.0",
+    "sanity": "^4.11.1",
+    "sass": "^1.93.0",
+    "stripe": "^18.1.1",
+    "styled-components": "^6.3.11"
+  }
+}
