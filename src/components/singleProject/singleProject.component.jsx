@@ -94,7 +94,7 @@ const SingleProject = ({ data, anchorId }) => {
           }
         });
       },
-      { threshold: 0.01, rootMargin: '0px 0px -4% 0px' }
+      { threshold: 0, rootMargin: '80px 0px -2% 0px' }
     );
 
     revealObserver.observe(node);
@@ -110,7 +110,6 @@ const SingleProject = ({ data, anchorId }) => {
       className={`singleProjectContainer ${isVisible ? 'is-visible' : ''}`}
       ref={projectRef}
       data-project-background={projectBackgroundColor}
-      style={{ contentVisibility: 'auto', containIntrinsicSize: '1200px' }}
     >
       <div className="projectDetails">
         <div className="projectDetailsMeta">
