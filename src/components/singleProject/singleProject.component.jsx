@@ -80,12 +80,6 @@ const SingleProject = ({ data, anchorId }) => {
       return undefined;
     }
 
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (prefersReducedMotion) {
-      setIsVisible(true);
-      return undefined;
-    }
-
     const revealIfInView = () => {
       const rect = node.getBoundingClientRect();
       const viewportHeight = window.innerHeight || document.documentElement.clientHeight;

@@ -13,6 +13,7 @@ function formatCurrency(value) {
 export default function StoreProductDetail({ product }) {
   const cart = useContext(CartContext);
   const [lightboxIndex, setLightboxIndex] = useState(null);
+  const [isAdded, setIsAdded] = useState(false);
   const lightboxImages = useMemo(() => {
     const seen = new Set();
 
@@ -57,6 +58,11 @@ export default function StoreProductDetail({ product }) {
     });
   }
 
+  function handleAddToCart() {
+    cart.addItem(product);
+    setIsAdded(true);
+  }
+
   useEffect(() => {
     if (!isLightboxOpen) {
       return undefined;
@@ -79,6 +85,18 @@ export default function StoreProductDetail({ product }) {
     window.addEventListener('keydown', handleKeydown);
     return () => window.removeEventListener('keydown', handleKeydown);
   }, [isLightboxOpen, lightboxImages.length]);
+
+  useEffect(() => {
+    if (!isAdded) {
+      return undefined;
+    }
+
+    const timeoutId = window.setTimeout(() => {
+      setIsAdded(false);
+    }, 1400);
+
+    return () => window.clearTimeout(timeoutId);
+  }, [isAdded]);
 
   return (
     <article className="storeDetail">
@@ -134,11 +152,11 @@ export default function StoreProductDetail({ product }) {
         <div className="storeDetailActions">
           <button
             type="button"
-            className="storeAction storeAction--primary"
-            onClick={() => cart.addItem(product)}
+            className={`storeAction storeAction--primary ${isAdded ? 'is-added' : ''}`}
+            onClick={handleAddToCart}
             disabled={!product.isAvailable}
           >
-            {product.isAvailable ? 'Add to Cart' : product.status === 'soldOut' ? 'Sold Out' : 'Coming Soon'}
+            {product.isAvailable ? (isAdded ? 'Added!' : 'Add to Cart') : product.status === 'soldOut' ? 'Sold Out' : 'Coming Soon'}
           </button>
         </div>
 

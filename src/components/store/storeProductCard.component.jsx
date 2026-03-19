@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { CartContext } from '../../CartContext';
 import StoreMedia from './storeMedia.component';
 
@@ -12,6 +12,24 @@ function formatCurrency(value) {
 
 export default function StoreProductCard({ product }) {
   const cart = useContext(CartContext);
+  const [isAdded, setIsAdded] = useState(false);
+
+  useEffect(() => {
+    if (!isAdded) {
+      return undefined;
+    }
+
+    const timeoutId = window.setTimeout(() => {
+      setIsAdded(false);
+    }, 1400);
+
+    return () => window.clearTimeout(timeoutId);
+  }, [isAdded]);
+
+  function handleAddToCart() {
+    cart.addItem(product);
+    setIsAdded(true);
+  }
 
   return (
     <article className="storeCard">
@@ -43,11 +61,11 @@ export default function StoreProductCard({ product }) {
           </Link>
           <button
             type="button"
-            className="storeAction storeAction--primary"
-            onClick={() => cart.addItem(product)}
+            className={`storeAction storeAction--primary ${isAdded ? 'is-added' : ''}`}
+            onClick={handleAddToCart}
             disabled={!product.isAvailable}
           >
-            {product.isAvailable ? 'Add to Cart' : product.status === 'soldOut' ? 'Sold Out' : 'Coming Soon'}
+            {product.isAvailable ? (isAdded ? 'Added!' : 'Add to Cart') : product.status === 'soldOut' ? 'Sold Out' : 'Coming Soon'}
           </button>
         </div>
       </div>

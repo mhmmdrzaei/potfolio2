@@ -1164,6 +1164,18 @@ font-family: CreamySugar, sans-serif;
   margin-bottom: 12px;
 }
 
+@keyframes storeAddedPulse {
+  0% {
+    transform: scale(1);
+  }
+  45% {
+    transform: scale(1.06);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
 .storeCardDescription,
 .storeDetailShort,
 .storeDetailDescription p {
@@ -1200,10 +1212,31 @@ font-family: CreamySugar, sans-serif;
   font-family: CreamySugar, sans-serif;
   font-size: 1.1rem;
   text-decoration: none;
+  transition: transform 0.18s ease, background-color 0.22s ease, box-shadow 0.22s ease;
+}
+
+.storeAction:hover,
+.storeCheckoutButton:hover,
+.storeCartToggle:hover,
+.storeCartClose:hover {
+  transform: translateY(-1px);
+}
+
+.storeAction:active,
+.storeCheckoutButton:active,
+.storeCartToggle:active,
+.storeCartClose:active {
+  transform: translateY(1px) scale(0.98);
 }
 
 .storeAction--secondary {
   background: $blue;
+}
+
+.storeAction.is-added {
+  background: $blue;
+  box-shadow: 0 0 0 6px rgba(5, 97, 245, 0.14), -2px 2px 7px rgba(0, 0, 0, 0.35);
+  animation: storeAddedPulse 0.55s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .storeAction[disabled],
@@ -2025,7 +2058,7 @@ body.sanity-studio-page .sanityStudioShell img {
   }
 }
 
-.projectMediaSlide video {
+video {
   border: 0;
   outline: none;
   box-shadow: none;
@@ -2033,4 +2066,26 @@ body.sanity-studio-page .sanityStudioShell img {
   backface-visibility: hidden;
   transform: none;
   -webkit-appearance: none;
+  appearance: none;
+}
+
+.projectMediaSlide,
+.video {
+  overflow: hidden;
+}
+
+@media screen and (max-width: 700px) {
+  .projectMediaSlide {
+    transform: none;
+    transition: opacity 0.35s ease;
+  }
+
+  .projectMediaSlide.is-active {
+    transform: none;
+  }
+
+  .projectMediaSlide video,
+  .video video {
+    border-radius: 0;
+  }
 }
