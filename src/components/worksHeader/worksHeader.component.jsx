@@ -16,6 +16,22 @@ const WorksHeader = ({ works }) => {
       return undefined;
     }
 
+    const revealIfInView = () => {
+      const rect = node.getBoundingClientRect();
+      const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+
+      if (rect.top <= viewportHeight * 0.95 && rect.bottom >= 0) {
+        setIsVisible(true);
+        return true;
+      }
+
+      return false;
+    };
+
+    if (revealIfInView()) {
+      return undefined;
+    }
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -25,7 +41,7 @@ const WorksHeader = ({ works }) => {
           }
         });
       },
-      { threshold: 0.08, rootMargin: '0px 0px -4% 0px' }
+      { threshold: 0.01, rootMargin: '0px 0px 12% 0px' }
     );
 
     observer.observe(node);

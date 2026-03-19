@@ -427,7 +427,7 @@ header {
     69px 69px black, 
     72px 72px white, 
     75px 75px black;
-    animation: play 4.5s cubic-bezier(0.5, 2, 0.5, 0.75); 
+    animation: play 4.5s cubic-bezier(0.5, 2, 0.5, 0.75) both; 
   
   text-transform: none;
   @media screen and (max-width:850px) {
@@ -2006,14 +2006,31 @@ body.sanity-studio-page .sanityStudioShell img {
 
 @media screen and (max-width:768px) {
   .intro {
-    animation: playMobile 2.8s cubic-bezier(0.5, 2, 0.5, 0.75);
+    text-shadow:
+      3px 3px black,
+      6px 6px white,
+      9px 9px black,
+      12px 12px white,
+      15px 15px black,
+      18px 18px white,
+      21px 21px black,
+      24px 24px white,
+      27px 27px black,
+      30px 30px white,
+      33px 33px black,
+      36px 36px white,
+      39px 39px black,
+      42px 42px white;
+    animation: playMobile 2.8s cubic-bezier(0.5, 2, 0.5, 0.75) both;
   }
 }
 
 .projectMediaSlide video {
   border: 0;
-  outline: 1px solid transparent;
+  outline: none;
+  box-shadow: none;
   background: transparent;
   backface-visibility: hidden;
-  transform: translateZ(0.01px) scale(1.002);
+  transform: none;
+  -webkit-appearance: none;
 }
